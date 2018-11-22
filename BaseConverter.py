@@ -5,6 +5,8 @@ http://interactivepython.org/runestone/static/pythonds/BasicDS/ConvertingDecimal
 '''
 
 def devideByBase(num=0, base=2):
+    digits = "0123456789ABCDEF"
+
     if type(num) != "int":
         try:
             num = int(num)
@@ -25,10 +27,14 @@ def devideByBase(num=0, base=2):
 
     binString = ""
     while not binaryStack.isEmpty():
-        binString = binString + str(binaryStack.pop())
+        binString = binString + digits[binaryStack.pop()]
     return binString
 
-if __name__ == "__main__":
+if __name__ == "__main__": 
     print(devideByBase("36"))
     print(devideByBase(25,2))
     print(devideByBase(25,16))
+    print(devideByBase(25,8))
+    print(devideByBase(256,16))
+    print(devideByBase(26,26))
+    print(devideByBase(23,12))
