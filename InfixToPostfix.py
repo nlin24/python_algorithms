@@ -30,12 +30,14 @@ def InfixToPostfix(math_string):
                     break
         elif  token == "+" or token == "-" or token == "*" or token == "/":
             # Push the operator when it has higher precedance than the operators already in stack
-            if opstack.isEmpty() or opPrecedence[token] >= opPrecedence[opstack.peek()]:
+            if opstack.isEmpty() or opPrecedence[token] > opPrecedence[opstack.peek()]:
                 opstack.push(token)
             # if an operator with lower precedence is encountered, then pop the ones in stack first before pushing the new one to stack
             else:
                 check = opstack.peek()
                 while check != "(":
+                    if opPrecedence[token] > opPrecedence[check]:
+                        break
                     ans = ans + opstack.pop()
                     if opstack.isEmpty():
                         break
@@ -53,3 +55,5 @@ if __name__ == "__main__":
     print(InfixToPostfix("A * B + C * D"))
     print(InfixToPostfix("( A + B ) * C - ( D - E ) * ( F + G )"))
     print(InfixToPostfix("D + ( A * B + C ) "))
+    print(InfixToPostfix("A * B * C "))
+    print(InfixToPostfix("1 + 3 * 5 / (6 - 4)"))
