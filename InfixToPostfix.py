@@ -7,6 +7,7 @@ def InfixToPostfix(math_string):
     opstack = Stack.Stack()
     ans = ""
     opPrecedence = {
+        "^": 3,
         "*": 2,
         "/": 2,
         "+": 1,
@@ -28,7 +29,7 @@ def InfixToPostfix(math_string):
                 if check == "(":
                     opstack.pop()
                     break
-        elif  token == "+" or token == "-" or token == "*" or token == "/":
+        elif  token == "+" or token == "-" or token == "*" or token == "/" or token == "^":
             # Push the operator when it has higher precedance than the operators already in stack
             if opstack.isEmpty() or opPrecedence[token] > opPrecedence[opstack.peek()]:
                 opstack.push(token)
@@ -57,3 +58,4 @@ if __name__ == "__main__":
     print(InfixToPostfix("D + ( A * B + C ) "))
     print(InfixToPostfix("A * B * C "))
     print(InfixToPostfix("1 + 3 * 5 / (6 - 4)"))
+    print(InfixToPostfix("5 * 3 ^ (4 - 2)"))
