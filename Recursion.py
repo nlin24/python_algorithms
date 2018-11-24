@@ -40,6 +40,18 @@ def checkPalindrome(inputString):
     else:
         return False
 
+# Calculate the number of coins for changes via recursions
+def recMC(coinValueList, change):
+    minCoins = change
+    if change in coinValueList:
+        return 1
+    else:
+        for i in [c for c in coinValueList if c <= change]:
+            numCoins = 1 + recMC(coinValueList, change-i)
+            if numCoins < minCoins:
+                minCoins = numCoins
+    return minCoins
+
 if __name__ == "__main__":
     print(sumOfList([2,4,6,8,10]))
     print(fact(7))
@@ -57,3 +69,4 @@ if __name__ == "__main__":
     print(checkPalindrome("RevileddidIlivesaidIasevilIdiddeliver".lower()))
     print(checkPalindrome("Kanakanak".lower()))
     print(checkPalindrome("hello".lower()))
+    print(recMC([1,5,10,25],50))
