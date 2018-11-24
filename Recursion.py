@@ -33,6 +33,13 @@ def reverse(inputString):
         else:
             return reverse(inputString[1:]) + inputString[0]
 
+# Check if an input string is a palindrome via recursion and the reverse function
+def checkPalindrome(inputString):
+    if inputString == reverse(inputString):
+        return True
+    else:
+        return False
+
 if __name__ == "__main__":
     print(sumOfList([2,4,6,8,10]))
     print(fact(7))
@@ -43,3 +50,10 @@ if __name__ == "__main__":
     print(reverse("l"))
     print(reverse("follow"))
     print(reverse(""))
+
+    print(checkPalindrome("kayak"))
+    print(checkPalindrome("aibohphobia"))
+    print(checkPalindrome("Livenotonevil".lower()))
+    print(checkPalindrome("RevileddidIlivesaidIasevilIdiddeliver".lower()))
+    print(checkPalindrome("Kanakanak".lower()))
+    print(checkPalindrome("hello".lower()))
