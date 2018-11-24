@@ -29,15 +29,15 @@ class HashTable:
             if self.slots[hashValue] == key:
                 self.data[hashValue] = value
             # if slot is preoccupied with other key-value pair, rehash
-            elif self.slots[hashValue] != key:
-                tmpHash = hashValue
-                while self.slots[tmpHash] != None:
-                    tmpHash = self.rehash(tmpHash, self.size)
-                if self.slots[tmpHash] == key:
-                    self.data[tmpHash] = value
+            else:
+                #tmpHash = hashValue
+                while self.slots[hashValue] != None:
+                    hashValue = self.rehash(hashValue, self.size)
+                if self.slots[hashValue] == key:
+                    self.data[hashValue] = value
                 else:
-                    self.slots[tmpHash] = key
-                    self.data[tmpHash] = value
+                    self.slots[hashValue] = key
+                    self.data[hashValue] = value
 
     # The get method calculates the hash value. If the key does not match, rehash
     def get(self, key):
