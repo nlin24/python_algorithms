@@ -9,6 +9,14 @@ def sumOfList(numList):
     else:
         return numList[0] + sumOfList(numList[1:])
 
+def fact(n):
+    if n <= 1:
+        return 1
+    else:
+        return n * fact(n-1)
+
 if __name__ == "__main__":
     l = [1,3,5,7,9]
     print(sumOfList(l))
+    print(sumOfList([2,4,6,8,10]))
+    print(fact(7))
