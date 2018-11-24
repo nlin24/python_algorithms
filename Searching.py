@@ -35,13 +35,15 @@ def binarySearchRecursion(aList, item):
     else:
         # Reduce the aList size by half until it is length of 1 or 0 when item is not in list
         midpoint = len(aList)//2
+        first = 0
+        last = len(aList) -1
         if aList[midpoint] == item:
             return True
         else:
             if item > aList[midpoint]:
-                return binarySearchRecursion(aList[midpoint+1:], item)
+                return binarySearchRecursion(aList[midpoint+1:last], item)
             else:
-                return binarySearchRecursion(aList[:midpoint], item)
+                return binarySearchRecursion(aList[first:midpoint], item)
 
 def testLinerSearch():
     print("[x] Test Liner Search:")
@@ -72,7 +74,7 @@ def testSubList():
 
 if __name__ == "__main__":
     #testSubList()    
-    testLinerSearch()
-    testBinarySearch()
+    #testLinerSearch()
+    #testBinarySearch()
     testBinarySearchRecursion()
     
