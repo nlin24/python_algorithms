@@ -65,6 +65,51 @@ def gapInsertionSort(alist, start, gap):
             currentPosition = currentPosition - gap
         alist[currentPosition] = currentValue
 
+def mergeSort(alist):
+    print("[x] Splitting",alist)
+    if len(alist) > 1:
+        mid = len(alist) // 2
+        leftHalf = alist[:mid]
+        rightHalf = alist[mid:]
+        
+        mergeSort(leftHalf)
+        mergeSort(rightHalf)
+
+        i = 0 # index for left half
+        j = 0 # index for right half
+        k = 0 # index for merging list
+        
+        # merge the two halves
+        while i < len(leftHalf) and j < len(rightHalf):
+            if leftHalf[i] > rightHalf[j]:
+                print("alist pick right in right/left compareson:", rightHalf[j])
+                alist[k] = rightHalf[j]
+                j = j + 1
+            else:
+                print("alist pick left in right/left compareson:", leftHalf[i])
+                alist[k] = leftHalf[i]
+                i += 1
+            k += 1
+        
+        while i < len(leftHalf):
+            print("alist merges left:", leftHalf[i])
+            alist[k] = leftHalf[i]
+            i += 1
+            k += 1
+        
+        while j < len(rightHalf):
+            print("alist merges right:", rightHalf[j])
+            alist[k] = rightHalf[j]
+            j += 1
+            k += 1
+    print("[o] Merging ", alist)
+
+def testMergeSort():
+    #alist = [54,26,93,17,77,31,44,55,20]
+    alist = [3,2,1,4]
+    mergeSort(alist)
+    print(alist)
+
 def testShellSort():
     alist = [54,26,93,17,77,31,44,55,20]
     shellSort(alist)
@@ -93,4 +138,5 @@ if __name__ == "__main__":
     #testBubbleSort()
     #testSelectionSort()
     #testInsertionSort()
-    testShellSort()
+    #testShellSort()
+    testMergeSort()
