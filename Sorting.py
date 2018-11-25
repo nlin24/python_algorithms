@@ -25,11 +25,20 @@ def shortBubbleSort(alist):
         if exchanged == False:
             return alist
 
+def selectionSort(alist):
+    for i in range(len(alist)-1, 0, -1 ):
+        maxIndex = 0
+        for j in range(1,i+1):
+            if alist[maxIndex] < alist[j]:
+                maxIndex = j
+        tmp = alist[i]
+        alist[i] = alist[maxIndex]
+        alist[maxIndex] = tmp
 
-            
-            
-
-
+def testSelectionSort():
+    alist = [54,26,93,17,77,31,44,55,20]
+    selectionSort(alist)
+    print(alist)
 
 def testBubbleSort():
     alist = [54,26,93,17,77,31,44,55,20]
@@ -41,4 +50,5 @@ def testBubbleSort():
     print(clist)
 
 if __name__ == "__main__":
-    testBubbleSort()
+    #testBubbleSort()
+    testSelectionSort()
