@@ -35,6 +35,22 @@ def selectionSort(alist):
         alist[i] = alist[maxIndex]
         alist[maxIndex] = tmp
 
+def insertionSort(alist):
+    for index in range(1,len(alist)):
+        currentValue = alist[index]
+        currentPosition = index
+        while currentPosition > 0 and currentValue < alist[currentPosition-1]:
+            alist[currentPosition] = alist[currentPosition-1]
+            currentPosition = currentPosition - 1
+        alist[currentPosition] = currentValue
+
+def testInsertionSort():
+    alist = [54,26,93,17,77,31,44,55,20]
+    insertionSort(alist)
+    print(alist)
+
+
+
 def testSelectionSort():
     alist = [54,26,93,17,77,31,44,55,20]
     selectionSort(alist)
@@ -50,5 +66,6 @@ def testBubbleSort():
     print(clist)
 
 if __name__ == "__main__":
-    #testBubbleSort()
+    testBubbleSort()
     testSelectionSort()
+    testInsertionSort()
