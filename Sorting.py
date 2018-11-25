@@ -44,12 +44,36 @@ def insertionSort(alist):
             currentPosition = currentPosition - 1
         alist[currentPosition] = currentValue
 
+def shellSort(alist):
+    # first pick the sublist size. In this example we split the list in two
+    sublistCount = len(alist) // 2
+
+    while sublistCount > 0:
+        for startPosition in range(sublistCount):
+            gapInsertionSort(alist,startPosition, sublistCount)
+        
+        print("After increment of size", sublistCount, "The list is ", alist)
+
+        sublistCount = sublistCount // 2
+
+def gapInsertionSort(alist, start, gap):
+    for i in range(start+gap, len(alist), gap):
+        currentValue = alist[i]
+        currentPosition = i
+        while currentPosition >= gap and currentValue < alist[currentPosition-gap]:
+            alist[currentPosition] = alist[currentPosition-gap]
+            currentPosition = currentPosition - gap
+        alist[currentPosition] = currentValue
+
+def testShellSort():
+    alist = [54,26,93,17,77,31,44,55,20]
+    shellSort(alist)
+    print(alist)
+
 def testInsertionSort():
     alist = [54,26,93,17,77,31,44,55,20]
     insertionSort(alist)
     print(alist)
-
-
 
 def testSelectionSort():
     alist = [54,26,93,17,77,31,44,55,20]
@@ -66,6 +90,7 @@ def testBubbleSort():
     print(clist)
 
 if __name__ == "__main__":
-    testBubbleSort()
-    testSelectionSort()
-    testInsertionSort()
+    #testBubbleSort()
+    #testSelectionSort()
+    #testInsertionSort()
+    testShellSort()
