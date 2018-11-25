@@ -82,23 +82,23 @@ def mergeSort(alist):
         # merge the two halves
         while i < len(leftHalf) and j < len(rightHalf):
             if leftHalf[i] > rightHalf[j]:
-                print("alist pick right in right/left compareson:", rightHalf[j])
+                print("Pick from right half while merge from both right and left halves:", rightHalf[j])
                 alist[k] = rightHalf[j]
                 j = j + 1
             else:
-                print("alist pick left in right/left compareson:", leftHalf[i])
+                print("Pick from left half while merge from both right and left halves:", leftHalf[i])
                 alist[k] = leftHalf[i]
                 i += 1
             k += 1
         
         while i < len(leftHalf):
-            print("alist merges left:", leftHalf[i])
+            print("Merges left only:", leftHalf[i])
             alist[k] = leftHalf[i]
             i += 1
             k += 1
         
         while j < len(rightHalf):
-            print("alist merges right:", rightHalf[j])
+            print("Merges right only:", rightHalf[j])
             alist[k] = rightHalf[j]
             j += 1
             k += 1
