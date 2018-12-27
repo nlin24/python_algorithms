@@ -2,7 +2,7 @@ class BinaryTree:
     """
     A simple binary tree node
     """
-    def __init__(self,nodeName):
+    def __init__(self,nodeName =""):
         self.key = nodeName
         self.rightChild = None
         self.leftChild = None
