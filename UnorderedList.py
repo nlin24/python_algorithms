@@ -14,17 +14,20 @@ class UnorderedList:
             return True
         return False
     
-    # Add item at the head of the unordered list because it's the easiest
-    # Track the end position. Update the end position only at the first add operation
     def add(self, item):
+        '''
+        Add item at the head of the unordered list because it's the easiest. Track the end position. Update the end position only at the first add operation
+        '''
         tmp = self.head
         self.head = Node.Node(item)
         self.head.setNextNode(tmp)
         if self.head.getNextNode() == None:
             self.end = self.head
     
-    # Count number of nodes in the unsorted list by traversing through the list
     def size(self):
+        '''
+        Count number of nodes in the unsorted list by traversing through the list
+        '''
         count = 0
         current = self.head
         while current != None:
@@ -32,8 +35,10 @@ class UnorderedList:
             count += 1 
         return count
 
-    # Return True/False if the item is in the unsorted list. Search by traversing through the list
     def search(self, item): 
+        '''
+        Return True/False if the item is in the unsorted list. Search by traversing through the list
+        '''
         found = False
         current = self.head
         while current != None:
@@ -44,9 +49,11 @@ class UnorderedList:
                 current = current.getNextNode()
         
         return found
-    
-    # Implement remove by search(item) and then disconnecting the node, reconnecting to the previous node.getNextNode()
+
     def remove(self, item):
+        '''
+        Implement remove by search(item) and then disconnecting the node, reconnecting to the previous node.getNextNode()
+        '''
         found = False
         # Handle special case where item is found at the head. If not traverse the list
         if self.head.getData() == item:
@@ -71,17 +78,48 @@ class UnorderedList:
 
         return found
     
-    # Append to the end of the list. Update the end position to the new item
     def append(self, item): 
+        '''
+        Append to the end of the list. Update the end position to the new item
+        '''
         newNode = Node.Node(item)
         self.end.setNextNode(newNode)
         self.end = self.end.getNextNode()
         
-    def insert(self, position, item): 
+    def insertAt(self, index=None, value=0):
+        '''
+        Insert value in the list at the index position
+        '''
+        currentNode = self.head
+        newNode = Node.Node(value)
+        i = 0
+        if index > self.size() or index == None:
+            raise IndexError('index greater than list size')
+        while i < index-1:
+            currentNode = currentNode.getNextNode()
+            i += 1
+        newNode.setNextNode(currentNode.getNextNode())
+        currentNode.setNextNode(newNode)
         return None
     
-    # Pop the head of the list
+    def deleteAt(self, index=None):
+        '''
+        Delete node at the indexed position
+        '''
+        i = 0
+        currentNode = self.head
+        if index > self.size() or index == None:
+            raise IndexError('index greater than list size')
+        while i < index-1:
+            currentNode = currentNode.getNextNode()
+            i += 1
+        currentNode.setNextNode((currentNode.getNextNode()).getNextNode())
+        return None
+
     def pop(self): 
+        '''
+        Pop the head of the list
+        '''
         if self.head != None:
             result = self.head.getData()
             self.head = self.head.getNextNode()
@@ -96,6 +134,8 @@ if __name__ == "__main__":
     mylist.add(3)
     mylist.append(0)
     mylist.append(4)
+    mylist.insertAt(3,10)
+    mylist.deleteAt(3)
     print("unordered list data:")
     while mylist.head != None:
         print(mylist.pop())
