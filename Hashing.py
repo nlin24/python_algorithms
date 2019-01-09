@@ -11,8 +11,5 @@ def hashFolding(aString, tableSize):
     # Calculate hash value via remainder method
     return stringSum % tableSize
 
-def testHashFolding():
-    print(hashFolding('cat', 11))
-
 if __name__ == "__main__":
-    testHashFolding()
+    print(hashFolding('cat', 11))
